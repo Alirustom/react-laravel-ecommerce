@@ -13,7 +13,7 @@ function Header(){
 
         <div className='container'>
           <Navbar expand="lg" className="">
-            <Navbar.Brand href="#">
+            <Navbar.Brand href="/">
               <img src={Logo} alt='' width={170} />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
@@ -22,6 +22,7 @@ function Header(){
                 className="ms-auto my-2 my-lg-0"
                 navbarScroll
               >
+                <Nav.Link href="/shop">Shop</Nav.Link>
                 <Nav.Link href="#action1">Mens</Nav.Link>
                 <Nav.Link href="#action2">Womens</Nav.Link>
                 <Nav.Link href="#action2">Kids</Nav.Link>
