@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import SliderOneImg from '../assets/images/banner-1.jpg';
 import SliderTwoImg from '../assets/images/banner-2.jpg';
+import LatestProduct from '../components/common/latestproduct.jsx'
 
 const Home = () => {
   return (
@@ -67,6 +68,8 @@ const Home = () => {
           </SwiperSlide>                
         </Swiper>
       </section>
+
+      <LatestProduct></LatestProduct>
 
     </>
   )
