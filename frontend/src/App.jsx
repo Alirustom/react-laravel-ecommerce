@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './components/Home';
 import Shop from './components/shop';
 import Login from './components/admin/login';
+import { ToastContainer, toast } from 'react-toastify';
+import Dashboard from './components/admin/dashboard';
 
 function App() {
   
@@ -16,9 +18,10 @@ function App() {
             <Route path='/' element={<Home/>} />
             <Route path='/shop' element={<Shop/>} />
             <Route path='/admin/login' element={<Login/>} />
+            <Route path='/admin/dashboard' element={<Dashboard/>} />
            </Routes> 
         </BrowserRouter>
-
+       <ToastContainer />
     </>
   )
 }

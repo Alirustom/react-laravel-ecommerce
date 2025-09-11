@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Layout from "../common/Layout";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 import {
   Container,
   Row,
@@ -18,6 +21,7 @@ const Login = () => {
   const [error, setError]       = useState("");
   const [loading, setLoading]   = useState(false);
   const isMobile = window.innerWidth <= 768;
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,15 +36,16 @@ const Login = () => {
 
       if (res.status === 200 && res.data.token) {
         localStorage.setItem("token", res.data.token);
-        alert("Login Successful!");
+        toast.success("Login Successful! Welcome Back " + res.data.name);
+        navigate("/admin/dashboard");
       } else {
-        setError("Invalid credentials");
+        toast.error("Invalid credentials");
       }
     } catch (err) {
       if (err.response && err.response.status === 401) {
-        setError("Invalid credentials");
+        toast.error("Invalid credentials");
       } else {
-        setError("Something went wrong. Try again.");
+        toast.error("Something went wrong. Try again.");
       }
     } finally {
       setLoading(false);
