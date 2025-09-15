@@ -15,23 +15,29 @@ function App() {
   return (
     <>
         
-        <BrowserRouter>
-        
-           <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/shop' element={<Shop/>} />
-            <Route path='/admin/login' element={<Login/>} />
-            <Route path='/admin/dashboard' element={
-              <AdminAuthProvider>
-              <AdminRequireAuth>
-                <Dashboard/>
-              </AdminRequireAuth>
-              </AdminAuthProvider>
-            } />
-           </Routes>
-           
-        </BrowserRouter>
-       <ToastContainer />
+      <BrowserRouter>
+          <AdminAuthProvider>   {/* ✅ wrap everything once */}
+            <Routes>
+              {/* Public URLs */}
+              <Route path='/' element={<Home />} />
+              <Route path='/shop' element={<Shop />} />
+              <Route path='/admin/login' element={<Login />} />
+
+              {/* Protected Admin URL */}
+              <Route
+                path='/admin/dashboard'
+                element={
+                  <AdminRequireAuth>
+                    <Dashboard />
+                  </AdminRequireAuth>
+                }
+              />
+            </Routes>
+          </AdminAuthProvider>
+       </BrowserRouter>
+
+      <ToastContainer />
+
     </>
   )
 }
