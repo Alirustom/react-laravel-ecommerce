@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const AdminAuthContext = createContext();
 
-export const AdminAuthProvider = ({children}) => {
+const AdminAuthProvider = ({children}) => {
    const admin_info_token = localStorage.getItem('token');
    const [user, setUser]  = useState(admin_info_token);
 
@@ -18,3 +18,5 @@ export const AdminAuthProvider = ({children}) => {
            {children}
           </AdminAuthContext.Provider>)
 }
+
+export default AdminAuthProvider;
