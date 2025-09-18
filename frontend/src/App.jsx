@@ -7,7 +7,7 @@ import Login from './components/admin/login';
 import { ToastContainer, toast } from 'react-toastify';
 import Dashboard from './components/admin/dashboard';
 import AdminRequireAuth from './components/admin/AdminRequireAuth';
-import AdminAuthProvider from './components/context/AdminAuth';
+
 
 function App() {
   
@@ -16,7 +16,7 @@ function App() {
     <>
         
       <BrowserRouter>
-          <AdminAuthProvider>   {/* ✅ wrap everything once */}
+          
             <Routes>
               {/* Public URLs */}
               <Route path='/' element={<Home />} />
@@ -33,7 +33,7 @@ function App() {
                 }
               />
             </Routes>
-          </AdminAuthProvider>
+          
        </BrowserRouter>
 
       <ToastContainer />

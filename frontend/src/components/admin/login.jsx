@@ -36,8 +36,9 @@ const Login = () => {
 
       if (res.status === 200 && res.data.token) {
         localStorage.setItem("token", res.data.token);
-        toast.success("Login Successful! Welcome Back " + res.data.name);
         navigate("/admin/dashboard");
+        toast.success("Login Successful! Welcome Back " + res.data.name);
+        
       } else {
         toast.error("Invalid credentials");
       }
