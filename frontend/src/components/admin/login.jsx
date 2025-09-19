@@ -34,10 +34,11 @@ const Login = () => {
         password,
       });
 
-      if (res.status === 200 && res.data.token) {
+      if (res.data.token) {
         localStorage.setItem("token", res.data.token);
         navigate("/admin/dashboard");
         toast.success("Login Successful! Welcome Back " + res.data.name);
+         console.log(res.data);
         
       } else {
         toast.error("Invalid credentials");
