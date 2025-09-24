@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Layout from "../common/Layout";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../common/http";
+import { AdminAuthContext } from "../context/AdminAuth";
 
 import {
   Container,
@@ -16,30 +18,30 @@ import {
 } from "react-bootstrap";
 
 const Login = () => {
+  const {login} = useContext(AdminAuthContext);
   const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
   const [error, setError]       = useState("");
   const [loading, setLoading]   = useState(false);
   const isMobile = window.innerWidth <= 768;
   const navigate = useNavigate();
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/admin/login", {
+      const res = await axios.post(`${apiUrl}/admin/login`, {
         email,
         password,
       });
 
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);
+        login(res.data.token);
         navigate("/admin/dashboard");
         toast.success("Login Successful! Welcome Back " + res.data.name);
-         console.log(res.data);
-        
       } else {
         toast.error("Invalid credentials");
       }

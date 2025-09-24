@@ -6,7 +6,7 @@ const AdminAuthProvider = ({children}) => {
    const admin_info_token = localStorage.getItem('token');
    const [user, setUser]  = useState(admin_info_token);
 
-   const login = (user) => {
+const login = (user) => {
      setUser(user);
    }
    const logout = () => {
